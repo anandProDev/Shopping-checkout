@@ -8,7 +8,7 @@ import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.Assertions.*
 import org.junit.jupiter.api.Nested
 
-internal class ShoppingControllerTest {
+internal class ShoppingCheckoutControllerTest {
 
     val catalogue = Catalogue()
     val shoppingController = ShoppingController(catalogue)
@@ -40,7 +40,7 @@ internal class ShoppingControllerTest {
         fun `when he shops 1 item of A, 1 item of B and returns 1 item of A, then ends up with 1 item of B`() {
             shoppingController.addItemsToShoppingCart("1", "2", Item("A", 1))
             shoppingController.addItemsToShoppingCart("1", "2", Item("B", 1))
-            shoppingController.remoteItemsFromShoppingCart("1", "2", Item("A", 1))
+            shoppingController.removeItemsFromShoppingCart("1", "2", Item("A", 1))
 
             val allItemsOfCustomer = shoppingController.getAllItemsOfCustomer("1", "2")
 

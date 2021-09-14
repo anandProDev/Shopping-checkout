@@ -1,6 +1,5 @@
 package com.supermarket.shoppingcheckout.shopping
 
-
 import com.supermarket.shoppingcheckout.data.Catalogue
 import com.supermarket.shoppingcheckout.data.Item
 import com.supermarket.shoppingcheckout.helper.getKey
@@ -34,7 +33,7 @@ class ShoppingController(val catalogue: Catalogue) {
     }
 
     @PutMapping("/items/remove/{tillId}/{customerId}")
-    fun remoteItemsFromShoppingCart(@PathVariable("tillId") tillId: String, @PathVariable ("customerId") customerId: String, @RequestBody item: Item): List<Item> {
+    fun removeItemsFromShoppingCart(@PathVariable("tillId") tillId: String, @PathVariable ("customerId") customerId: String, @RequestBody item: Item): List<Item> {
         val key = getKey(tillId, customerId)
         val customersItems: HashMap<String, Int>? = catalogue.getCustomerShoppingCart(key)
         if (customersItems.isNullOrEmpty()) {
